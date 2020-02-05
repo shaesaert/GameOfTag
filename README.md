@@ -9,4 +9,4 @@ Run Gameoftag_ex to see the results on approximate stochastic verification of a 
 The information on installing MPT came from
 https://codeocean.com/capsule/4374148/tree
 
-Part of the code has been developed while S.Haesaert was a PhD student with A.Abate at Oxford University. 
+Part of the code has been developed while S.Haesaert was a PhD student with A.Abate. 
