@@ -71,18 +71,7 @@ if size(A,2) ==1
 else 
     error('not implemented yet')
 end
-% % transition probability matrices for safety
-% P = zeros(nu*nz1*nz2,nz1*nz2);
-% for k=1:nu
-%     for j=1:nz2
-%         for i=1:nz1
-%             mean_r = A*[zrep1(i); zrep2(j)]+B_p*urep(k);
-%             t1 = normcdf(z1,mean_r(1),1);
-%             t2 = normcdf(z2,mean_r(2),1);
-%             P(nz1*nz2*(k-1)+nz1*(j-1)+i,:) = reshape((t2(2:nz2+1) - t2(1:nz2))'*(t1(2:nz1+1) - t1(1:nz1)),1,[]);
-%         end
-%     end
-% end
+
 
 
 

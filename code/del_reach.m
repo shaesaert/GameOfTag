@@ -20,9 +20,7 @@ mu =zeros(length(NFA.S),length(MDP.z_rep));
 %% Value iteration : Initialise
 % 
 % V(z,q)=0 Initialize
-% 
-% 
-%
+
 V = zeros(length(NFA.S),length(MDP.z_rep));
 V_new = zeros(length(NFA.S),length(MDP.z_rep));
 V_aux=zeros(1,length(MDP.z_rep));
@@ -56,21 +54,8 @@ for k=120:-1:1
 
        [~,index_mu(q_old,:)] = max(reshape(V_aux* MDP.P',length(MDP.z_rep),length(MDP.u_rep)),[],2) ;
 
-      % we loose probability here!
     end
     
-%     for q = NFA.S
-%                figure(1)
-%        subplot(length(NFA.S),1,q)
-%        plot(MDP.z_rep,V_new(q,:))
-%        title(['mode=',num2str(q)])
-%        figure(2)
-%        subplot(length(NFA.S),1,q)
-%        plot(MDP.z_rep,index_mu(q,:))
-%        title(['mode=',num2str(q)])
-%     end
-%     pause
-    % check convergence!
 
 end 
   % now its is time to compute the final value function. For this we look
@@ -90,7 +75,6 @@ for q_old = NFA.S
        % average over the transition distribution 
        [~,index_mu] = max(reshape(V_aux* MDP.P',length(MDP.z_rep),length(MDP.u_rep)),[],2) ;
        mu(q_old,:) = MDP.u_rep(index_mu);
-      % we loose probability here!
 end
 end
 

@@ -40,41 +40,7 @@ cvx_begin SDP quiet
 cvx_end
     Q=Q-K*P;
     display(['Q = ',num2str(Q)])
-% %% Optimise K
-% 
-% % 1. First try  
-% 
-% 
-% %X-(A+BK)X(A+BK)'-cw*(Bw-P*Bws)(Bw-P*Bws)>=0
-% % xx'<=X
-% % Kxx'K'<=KXK'<=.3*e(or something else)
-% % .3e-KXK'>=0
-% % [.3 K;  
-% %   K' X^-1]
-% 
-% % X-[(A+BK)X (Bw-P*Bws)] [X^-1 0;0 cwI][(A+BK)X (Bw-P*Bws)]'>=0
-% %[X      0       | X(A+BK)'       ]
-% %[ 0        cw^-1I  |  (Bw-P*Bws)'  ]
-% %[................. |  X            ]>=0
-% 
-% % ( define based on X and L=KX)
-% Noise=sqrt((Bw-P*Bws)*(Bw-P*Bws)'*16+(B*R-P*Bs)*(B*R-P*Bs)'*.05);
-% cvx_begin SDP quiet
-%             variable X(n,n) semidefinite
-%             variable L(1,n)   
-%             variable t2 semidefinite
-%         minimise(t2)
-%         subject to 
-%             0<=[5 L;L' X];
-%             C*X*C'<=.2
-%             0    <=[    X,            zeros(n,n),     X*A'+ L'*B';...
-%                         zeros(n,n),   t2.*eye(n),     Noise';...
-%                         A*X+B*L,      Noise ,          X];
-%         
-% cvx_end
-% K=L/X;
-% K1=K;
-% display(['First try K =', num2str(K1)]);
+
 K=-K
 %% Compute Delta vs Epsilon
   max(abs(eig(A)))
