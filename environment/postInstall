@@ -1,0 +1,35 @@
+#!/bin/bash
+YALMIP_RELEASE=R20171121
+MOSEK_RELEASE=8.1.0.31
+
+curl -sL https://github.com/yalmip/YALMIP/archive/$YALMIP_RELEASE.tar.gz | tar xz
+
+curl -sL https://d2i6rjz61faulo.cloudfront.net/stable/$MOSEK_RELEASE/mosektoolslinux64x86.tar.bz2 | tar xj
+
+matlab -nodisplay -r \
+  "addpath('/mosek/8/toolbox/r2014a'); addpath(genpath('/YALMIP-$YALMIP_RELEASE')); savepath;"
+  
+mkdir deps && cd deps
+curl -L https://github.com/sqlp/sedumi/archive/master.tar.gz | tar xz
+cd .. 
+matlab -nodisplay -r "addpath(genpath('deps')); savepath"
+
+  
+curl -s http://web.cvxr.com/cvx/cvx-rd.tar.gz | tar zx
+matlab -nodisplay -r "cd cvx; cvx_setup()"
+
+matlab -nodisplay -r "\
+mkdir('/tbxmanager');\
+ cd('/tbxmanager');\
+ urlwrite('http://www.tbxmanager.com/tbxmanager.m', 'tbxmanager.m');\
+ a=evalc('tbxmanager');\
+ disp('Installed tbxmanager');\
+ evalc('tbxmanager install mpt mptdoc cddmex fourier glpkmex hysdel lcp sedumi espresso');\
+ evalc('mpt_init');\
+ a=mptopt('lpsolver','glpk','qpsolver','quadprog');\
+ disp('Installed MPT3');\
+ savepath;"
+
+
+
+
