@@ -156,8 +156,8 @@ for t =1:N
     % w = (LTI_abstract.Bw'*LTI_abstract.Bw)^(-1)*LTI_abstract.Bw'*... 
     % (x_1(:,t+1) - LTI_abstract.A*x_1(:,t)+LTI_abstract.B*u1)
     
-    % map x_1 to rep 
-    [~,maxrep] =min( MDP.z_rep-x_1(:,t+1)*ones(length(MDP.z_rep)));
+    % map x_1 to representative grid point
+    [~,maxrep] =min(MDP.z_rep-x_1(:,t+1)*ones(length(MDP.z_rep)));
     
 end
 
