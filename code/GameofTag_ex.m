@@ -4,7 +4,7 @@
 % Copyleft @ Sofie Haesaert 10/2017 updated 2018-2019
 clear all
 close all
-clc
+
 
 %% DEFINE THE SPECIFICATION OF INTEREST
 % we currently focus on the following specification 

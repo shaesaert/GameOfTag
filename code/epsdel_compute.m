@@ -149,5 +149,11 @@ evalin('caller','figrem=figure(gcf);');
 disp('<a href="matlab: figure(figrem)">Figure</a> of delta vs epsilon ');
 
 del=1-deltarange
+ 
+fig = gcf;
+fig.PaperUnits = 'inches';
+fig.PaperPosition = [0 0 6 3];
+print( '../results/epsdel.png','-dpng','-r0')
+
 end
 
