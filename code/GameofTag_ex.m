@@ -168,12 +168,19 @@ for t =1:N
     [~,maxrep] =min(MDP.z_rep-x_1(:,t+1)*ones(length(MDP.z_rep)));
     
 end
-
+    % compute representation of last abstract state 
+    t=t+1
+    % find representative state in abstract model 
+    [v,maxrep] =min(abs(MDP.z_rep-x_1(:,t)*ones(1,length(MDP.z_rep))));
+    % abstract input
+    % map back to continuous reduced order state 
+    x_1c(:,t) =MDP.z_rep(maxrep);
+    
 % Plot simulation:
 
-plot(1:N,x_1c(1,:),'x')
+plot(0:N,x_1c(1,:),'x')
 hold on
-plot(1:N+1,x_2(1,:))
+plot(0:N,x_2(1,:))
 
 title('following distance')
 xlabel('time')
