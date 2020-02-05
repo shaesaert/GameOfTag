@@ -1,6 +1,7 @@
 # GameOfTag
 By S.Haesaert and Sadegh Soudjani
-Simple example of approximate stochastic verification with model order reduction
+
+The is a simple example of an approximate stochastic verification with model order reduction.
 
 Run Gameoftag_ex to see the results on approximate stochastic verification of a simple game of tag with two cars.
 
