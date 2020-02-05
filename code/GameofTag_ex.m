@@ -117,7 +117,15 @@ NFA=  NFA_eps(DFA,eps,MDP,K_pol);
 [p,mu] = del_reach(MDP, NFA, del);
 
 plot(MDP.z_rep,p)
+xlim([-4,4])
+
+
 title('Robust satisfaction probability')
+xlabel('Abstract state')
+fig = gcf;
+fig.PaperUnits = 'inches';
+fig.PaperPosition = [0 0 6 3];
+print( '../results/rob.png','-dpng','-r0')
 
 
 
@@ -147,14 +155,14 @@ for t =1:N
     
     % noise realization that drives state evolution
     w=randn(1,1);
+    x_2(:,t+1)=A*x_2(:,t)+B*u2+Bw*w;
+    
     x_1(:,t+1)=LTI_abstract.A*x_1(:,t)+LTI_abstract.B*u1...
                 +LTI_abstract.Bw*w;
-    
-    x_2(:,t+1)=A*x_2(:,t)+B*u2+Bw*w;
     % Remark: 
-    % for control synthesis w has to be computed from x_1(t) and x_1(t+1), that is, 
-    % w = (LTI_abstract.Bw'*LTI_abstract.Bw)^(-1)*LTI_abstract.Bw'*... 
-    % (x_1(:,t+1) - LTI_abstract.A*x_1(:,t)+LTI_abstract.B*u1)
+    % for control synthesis w has to be computed from x_2(t) and x_2(t+1), that is, 
+    % w = (.Bw'*Bw)^(-1)*Bw'*... 
+    % (x_2(:,t+1) - A*x_2(:,t)+B*u2)
     
     % map x_1 to representative grid point
     [~,maxrep] =min(MDP.z_rep-x_1(:,t+1)*ones(length(MDP.z_rep)));
@@ -166,5 +174,14 @@ end
 plot(1:N,x_1c(1,:),'x')
 hold on
 plot(1:N+1,x_2(1,:))
+
+title('following distance')
+xlabel('time')
+ 
+fig = gcf;
+fig.PaperUnits = 'inches';
+fig.PaperPosition = [0 0 6 3];
+print( '../results/fig1.png','-dpng','-r0')
+
 
 end
