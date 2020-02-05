@@ -141,19 +141,7 @@ for Delt_comp=deltarange;%1-logspace(log(.4),log(.1),10) %1-\delta
     
     pk=[];
 end
-%figlast=figure;
-plot(1-deltarange,eps);
-xlabel('\delta')
-ylabel('\epsilon')
-evalin('caller','figrem=figure(gcf);');
-disp('<a href="matlab: figure(figrem)">Figure</a> of delta vs epsilon ');
 
-del=1-deltarange
- 
-fig = gcf;
-fig.PaperUnits = 'inches';
-fig.PaperPosition = [0 0 6 3];
-print( '../results/epsdel.png','-dpng','-r0')
 
 end
 
