@@ -1,7 +1,7 @@
 # GameOfTag
 Simple example of approximate stochastic verification with model order reduction
 
-run Gameoftag_ex to see the results on approximate stochastic verification of a simple game of tag with two cars.
+Run Gameoftag_ex to see the results on approximate stochastic verification of a simple game of tag with two cars.
 
 
 # Acknowledgement 
