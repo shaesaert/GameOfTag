@@ -1,8 +1,7 @@
 # GameOfTag
 Simple example of approximate stochastic verification with model order reduction
 
-Open Folder RobustComp and run GameOfTag_ex
-
+run Gameoftag_ex to see the results on approximate stochastic verification of a simple game of tag with two cars.
 
 
 # Acknowledgement 
